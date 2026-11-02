@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Soul Sister 🌻 | A Special Surprise</title>
+  <meta name="description"
+    content="A special, emotional birthday surprise website for my soul sister. Celebrating an unbreakable bond of laughter, care, and family.">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Playfair Display, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Ambient Canvas for Soft Floating Petals & Hearts -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- ==================== 1. PASSWORD SCREEN OVERLAY (Reference Video Style) ==================== -->
+  <div id="password-overlay" class="password-overlay" role="dialog" aria-modal="true" aria-labelledby="pwd-title">
+    <div class="pwd-card">
+
+      <!-- Polaroid Photo with Washi Tape (As seen in reference video 00:05) -->
+      <div class="pwd-polaroid-frame">
+        <div class="washi-tape-strip tape-center" aria-hidden="true"></div>
+        <div class="pwd-polaroid-img-wrap">
+          <img src="memory1.jpg" alt="Soul Sister Special Memory" class="pwd-polaroid-img" />
+        </div>
+        <div class="pwd-polaroid-note">Soul Sister 🌻</div>
+      </div>
+
+      <h2 id="pwd-title" class="pwd-title">Enter Your Secret Code</h2>
+      <p class="pwd-subtitle">Tap the 4-digit code to unlock your birthday surprise 🌸</p>
+
+      <!-- 4 PIN Indicator Dots -->
+      <div class="pin-dots-container" id="pin-dots-container" aria-label="PIN code input status">
+        <span class="pin-dot" id="pdot-0"></span>
+        <span class="pin-dot" id="pdot-1"></span>
+        <span class="pin-dot" id="pdot-2"></span>
+        <span class="pin-dot" id="pdot-3"></span>
+      </div>
+
+      <div id="pwd-error" class="pwd-error" role="alert" aria-live="polite"></div>
+
+      <!-- Numeric Keypad (As seen in reference video 00:05) -->
+      <div class="pin-keypad" id="pin-keypad" role="group" aria-label="PIN number keypad">
+        <button type="button" class="keypad-btn" data-key="1">1</button>
+        <button type="button" class="keypad-btn" data-key="2">2</button>
+        <button type="button" class="keypad-btn" data-key="3">3</button>
+        <button type="button" class="keypad-btn" data-key="4">4</button>
+        <button type="button" class="keypad-btn" data-key="5">5</button>
+        <button type="button" class="keypad-btn" data-key="6">6</button>
+        <button type="button" class="keypad-btn" data-key="7">7</button>
+        <button type="button" class="keypad-btn" data-key="8">8</button>
+        <button type="button" class="keypad-btn" data-key="9">9</button>
+        <button type="button" class="keypad-btn keypad-fn" data-key="clear" aria-label="Clear PIN">C</button>
+        <button type="button" class="keypad-btn" data-key="0">0</button>
+        <button type="button" class="keypad-btn keypad-fn" data-key="back" aria-label="Backspace">⌫</button>
+      </div>
+
+      <!-- Hidden physical input for keyboard typing -->
+      <input type="password" id="password-input" class="visually-hidden-input" maxlength="4" autocomplete="off"
+        aria-label="Secret Code Keyboard Input" />
+
+      <div class="pwd-hint">
+        <span>✨ Code: <strong>1111</strong> &bull; Made with love for Soul Sister 💓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN WEBSITE CONTENT ==================== -->
+  <div id="main-content" class="main-content is-locked" aria-hidden="true">
+
+    <!-- Floating Audio Control Bar -->
+    <header class="music-floating-bar" id="music-bar">
+      <div class="music-inner">
+        <div class="music-disc-wrap">
+          <div class="music-disc" id="music-disc" aria-hidden="true">
+            <span class="disc-core">🌻</span>
+          </div>
+        </div>
+        <div class="music-info">
+          <span class="music-tag">Background Music</span>
+          <span class="music-title" id="music-status-text">Soul Sister's Song 🎵</span>
+        </div>
+        <div class="music-controls">
+          <button id="play-our-song-btn" class="btn btn-music" aria-label="Play or pause our song">
+            <svg id="music-play-icon" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg id="music-pause-icon" class="is-hidden" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+            <span id="music-btn-text">Play Our Song</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dedicated Background Audio System (User Uploaded Song: Pretty Little Baby) -->
+    <audio id="bg-audio" preload="auto" loop playsinline>
+      <source src="soul_sister_song.mp3" type="audio/mpeg">
+      <source src="pretty_little_baby.mp3" type="audio/mpeg">
+      <source src="bg_music.mp3" type="audio/mpeg">
+      <source src="assets/soul_sister_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 2. MAIN INTRODUCTION SECTION -->
+    <section id="hero-section" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-sparkle-pill">
+          <span class="sunflower-mini">🌻</span>
+          <span>A Special Day for a Special Soul</span>
+          <span class="sparkle-mini">✨</span>
+        </div>
+        <h1 class="hero-title">Happy Birthday to My Soul Sister 🌻</h1>
+        <p class="hero-subtitle">
+          Some bonds aren't defined by blood, but by soul. Today is dedicated to the most extraordinary person in my
+          life, whose presence turns every ordinary moment into sunshine and makes every difficult day feel
+          effortless.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#letter-section" id="btn-open-surprise" class="btn btn-primary btn-large">
+            <span>Open Your Surprise</span>
+            <span class="btn-emoji">💌</span>
+          </a>
+        </div>
+
+        <div class="hero-scroll-indicator" aria-hidden="true">
+          <span>Explore below &bull; Pop the balloons, snap a memory & read your letter</span>
+          <div class="mouse-icon">
+            <div class="wheel"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. BALLOON POPPING INTERACTIVE GAME (Reference Video 00:19) ==================== -->
+    <section class="balloons-interactive-section" id="balloons-section"
+      aria-label="Pop the balloons to reveal secret message">
+      <div class="section-header">
+        <span class="section-tag">Interactive Surprise</span>
+        <h2 class="section-title">Pop The Balloons! 🎈</h2>
+        <p class="section-desc">Pop all the balloons to reveal our secret sisterhood message ✨</p>
+      </div>
+
+      <div class="balloons-stage" id="balloons-stage">
+        <div class="balloon-item" id="balloon-1" role="button" tabindex="0" data-idx="1" aria-label="Pop balloon 1">
+          <div class="balloon-bubble balloon-pink">
+            <span class="balloon-emoji">🎈</span>
+          </div>
+          <div class="balloon-string"></div>
+          <div class="balloon-pop-msg" id="pop-msg-1">Today's </div>
+        </div>
+
+        <div class="balloon-item" id="balloon-2" role="button" tabindex="0" data-idx="2" aria-label="Pop balloon 2">
+          <div class="balloon-bubble balloon-gold">
+            <span class="balloon-emoji">🎈</span>
+          </div>
+          <div class="balloon-string"></div>
+          <div class="balloon-pop-msg" id="pop-msg-2">your 💖</div>
+        </div>
+
+        <div class="balloon-item" id="balloon-3" role="button" tabindex="0" data-idx="3" aria-label="Pop balloon 3">
+          <div class="balloon-bubble balloon-rose">
+            <span class="balloon-emoji">🎈</span>
+          </div>
+          <div class="balloon-string"></div>
+          <div class="balloon-pop-msg" id="pop-msg-3"> special😋</div>
+        </div>
+
+        <div class="balloon-item" id="balloon-4" role="button" tabindex="0" data-idx="4" aria-label="Pop balloon 4">
+          <div class="balloon-bubble balloon-peach">
+            <span class="balloon-emoji">🎈</span>
+          </div>
+          <div class="balloon-string"></div>
+          <div class="balloon-pop-msg" id="pop-msg-4">Day 🌻</div>
+        </div>
+      </div>
+
+      <div class="balloon-revealed-panel is-hidden" id="balloon-revealed-panel">
+        <div class="revealed-badge-pill">✨ ALL BALLOONS POPPED! ✨</div>
+        <h3 class="revealed-panel-heading">You are Truly One of a Kind 💓</h3>
+        <div class="revealed-panel-content">
+          <p class="revealed-quote-lead">
+            <strong>Unique, Blood-Independent Bond:</strong> It highlights that even though you aren't related by
+            blood, your connection and care surpass a biological sibling relationship.
+          </p>
+          <div class="revealed-sep-line"></div>
+          <p class="revealed-quote-lead">
+            <strong>Shared Laughter & Happiness:</strong> It cherishes the fun moments, silly arguments, and the way
+            you both instantly bring a smile to each other's💓😋😅
+          </p>
+        </div>
+      </div>
+
+      <p class="balloons-hint-text" id="balloons-hint-text">
+        <span>Tap each balloon to pop it &bull; <strong id="balloons-left-count">4</strong> remaining 🎈</span>
+      </p>
+    </section>
+
+    <!-- ==================== 4. RETRO POLAROID CAMERA (Reference Video 00:14) ==================== -->
+    <section class="camera-interactive-section" id="camera-section"
+      aria-label="Capture a moment retro camera interaction">
+      <div class="section-header">
+        <span class="section-tag">Retro Instant Film</span>
+        <h2 class="section-title">Capture a Moment Just for You 💖</h2>
+        <p class="section-desc">Tap the camera shutter button to develop a special memory ✨</p>
+      </div>
+
+      <div class="camera-stage">
+        <!-- Retro Instant Camera Body -->
+        <div class="retro-camera" id="retro-camera">
+          <div class="camera-strap strap-left"></div>
+          <div class="camera-strap strap-right"></div>
+
+          <div class="camera-top-ridge">
+            <div class="camera-viewfinder"></div>
+            <div class="camera-flash" id="camera-flash"></div>
+          </div>
+
+          <div class="camera-shutter-container">
+            <button type="button" class="camera-shutter-btn" id="camera-shutter-btn"
+              aria-label="Snap photo to develop memory">
+              <span class="shutter-circle">📸</span>
+            </button>
+            <span class="shutter-label">SNAP</span>
+          </div>
+
+          <div class="camera-lens">
+            <div class="lens-glass"></div>
+            <div class="lens-iris">
+              <span>🌻</span>
+            </div>
+          </div>
+
+          <div class="camera-color-stripes">
+            <span class="stripe s1"></span>
+            <span class="stripe s2"></span>
+            <span class="stripe s3"></span>
+          </div>
+
+          <div class="film-slot-pocket">
+            <div class="slot-opening"></div>
+          </div>
+        </div>
+
+        <div class="camera-flash-overlay" id="camera-flash-overlay"></div>
+
+        <!-- The Developing Polaroid Photo (Slides out from camera slot/pocket) -->
+        <div class="camera-polaroid" id="camera-polaroid">
+          <div class="washi-tape-strip tape-center"></div>
+          <div class="polaroid-photo-box">
+            <img src="camera_memory.jpg" alt="Sunflower Birthday Cake Memory" class="polaroid-developed-img"
+              id="polaroid-developed-img" onerror="this.onerror=null;this.src='assets/camera_memory.jpg';" />
+            <div class="developing-overlay" id="developing-overlay">
+              <span class="developing-text">Developing your memory... ✨</span>
+            </div>
+          </div>
+          <div class="polaroid-caption-tag">
+            <span>"Unique, Blood-Independent Bond & Shared Laughter 💓"</span>
+          </div>
+        </div>
+
+        <div class="camera-action-guide" id="camera-action-guide">
+          <span>👆 Tap the camera shutter button to develop memory!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CHERISHED MEMORIES SECTION (Reference Video 00:22) ==================== -->
+    <section class="memories-banner-section" aria-label="Photo moments preview">
+      <div class="section-header">
+        <span class="section-tag">Golden Moments</span>
+        <h2 class="section-title">Our Beautiful Memories 🌻</h2>
+        <p class="section-desc">Tap any photograph to view it in full size</p>
+      </div>
+
+      <div class="memories-grid">
+        <figure class="memory-card polaroid-card tilt-left" data-photo="memory1.jpg"
+          data-caption="This is for you..!! 🫶🏻❤️ Always together through every season">
+          <div class="washi-tape-strip tape-angle-left"></div>
+          <div class="memory-img-wrapper">
+            <img src="memory1.jpg" alt="Bouquet of flowers with message This is for you" loading="lazy"
+              onerror="this.onerror=null;this.src='assets/memory1.jpg';" />
+            <div class="memory-overlay">
+              <span class="zoom-icon">🔍 View Photo</span>
+            </div>
+          </div>
+          <figcaption class="memory-caption">
+            <span class="caption-flower">🌻</span>
+            <span>Always together through every season</span>
+          </figcaption>
+        </figure>
+
+        <figure class="memory-card polaroid-card tilt-straight" data-photo="memory2.jpg"
+          data-caption="A vibrant bouquet of sunflowers blooming with warmth and sunshine 🌻">
+          <div class="washi-tape-strip tape-center"></div>
+          <div class="memory-img-wrapper">
+            <img src="memory2.jpg" alt="Bright yellow sunflowers bouquet" loading="lazy"
+              onerror="this.onerror=null;this.src='assets/memory2.jpg';" />
+            <div class="memory-overlay">
+              <span class="zoom-icon">🔍 View Photo</span>
+            </div>
+          </div>
+          <figcaption class="memory-caption">
+            <span class="caption-flower">🌸</span>
+            <span>A safe place to always be yourself</span>
+          </figcaption>
+        </figure>
+
+        <figure class="memory-card polaroid-card tilt-right" data-photo="memory3.jpg"
+          data-caption="Holding sunflowers up towards the sky and moon — Happy Birthday, Soul Sister ✨💓">
+          <div class="washi-tape-strip tape-angle-right"></div>
+          <div class="memory-img-wrapper">
+            <img src="memory3.jpg" alt="Sunflowers held up high under the evening sky and crescent moon"
+              loading="lazy" onerror="this.onerror=null;this.src='assets/memory3.jpg';" />
+            <div class="memory-overlay">
+              <span class="zoom-icon">🔍 View Photo</span>
+            </div>
+          </div>
+          <figcaption class="memory-caption">
+            <span class="caption-flower">✨</span>
+            <span>Happy Birthday, Soul Sister 💓</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== 6. LONG HEARTFELT LETTER ==================== -->
+    <section id="letter-section" class="letter-section" aria-label="Birthday letter for soul sister">
+      <div class="letter-wrapper">
+
+        <!-- Letter Navigation & Controls Bar -->
+        <div class="letter-ctrl-bar">
+          <div class="ctrl-bar-left">
+            <span class="letter-badge">💌 Heartfelt Letter</span>
+            <span class="reading-hint">Auto-scrolling active &bull; Tap letter to Pause / Resume</span>
+          </div>
+
+          <div class="ctrl-bar-right">
+            <!-- Auto Scroll Floating Controls -->
+            <div class="scroll-actions">
+              <button id="auto-scroll-toggle" class="btn btn-ctrl is-active" aria-label="Toggle auto scrolling"
+                title="Auto scroll letter">
+                <svg id="scroll-play-icon" class="is-hidden" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <svg id="scroll-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16"></rect>
+                  <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+                <span id="scroll-btn-label">Pause</span>
+              </button>
+
+              <button id="scroll-speed-btn" class="btn btn-ctrl btn-speed" aria-label="Scroll Speed: 1x"
+                title="Adjust scroll speed">
+                <span id="speed-label">1x</span>
+              </button>
+
+              <button id="scroll-top-btn" class="btn btn-ctrl" aria-label="Scroll to top of letter"
+                title="Back to top of letter">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+                <span>Top</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Letter Parchment Container -->
+        <article id="letter-parchment" class="letter-parchment" tabindex="0" role="region"
+          aria-label="Letter text scrollable container">
+          <div class="parchment-watermark" aria-hidden="true">🌻</div>
+
+          <!-- Letter Greeting Header -->
+          <div class="letter-header">
+            <div class="stamp-box">
+              <span class="stamp-icon">🌻</span>
+              <span class="stamp-text">FOR MY SOUL SISTER</span>
+            </div>
+            <h2 class="letter-heading">To My Dearest Soul Sister 💓</h2>
+            <div class="letter-divider">
+              <span class="line"></span>
+              <span class="sunflower-center">🌻</span>
+              <span class="line"></span>
+            </div>
+          </div>
+
+          <!-- The Complete Heartfelt Letter in English -->
+          <div id="letter-content" class="letter-content">
+
+            <p class="letter-paragraph lead-paragraph">
+              Dearest Soul Sister,
+            </p>
+
+            <p class="letter-paragraph">
+              I want to take a moment today to tell you how truly supportive you are, how much your presence means to
+              me, and how your gentle support makes the heaviest and most difficult days feel so much easier 🩷👭🏻💗.
+              We may not be related by blood, but our bond feels like real family in every single sense of the word.
+              You are so much more than an ordinary friend to me—you are a pillar of comfort, a confidante, and a
+              sister given to me by destiny.
+            </p>
+
+            <p class="letter-paragraph">
+              I genuinely never want to lose this beautiful bond we share. No matter where life takes us, I hope that
+              misunderstandings, physical distance, or busy schedules never ever turn us into strangers 🩷🥹. Life
+              gets hectic, but having you in my life is something I will always protect and cherish.
+            </p>
+
+            <p class="letter-paragraph">
+              I smile every time I remember our funny conversations, random inside jokes, silly moments, and the
+              unadulterated happiness we share whenever we laugh together. Those unfiltered, spontaneous moments are
+              some of the sweetest treasures I hold in my heart.
+            </p>
+
+            <!-- ==================== SPECIAL HIGHLIGHTED MESSAGE BOX ==================== -->
+            <div class="letter-highlight-box" role="region" aria-label="Special highlighted sisterhood message">
+              <div class="highlight-box-header">
+                <span class="highlight-sparkle-icon">✨</span>
+                <span class="highlight-pill-tag">SPECIAL HIGHLIGHT &bull; OUR BOND 🌻</span>
+                <span class="highlight-sparkle-icon">✨</span>
+              </div>
+
+              <div class="highlight-items-list">
+                <!-- Highlight Point 1 -->
+                <div class="highlight-item-card">
+                  <div class="highlight-item-badge">
+                    <span class="highlight-icon">♾️</span>
+                    <h3 class="highlight-item-title">Unique, Blood-Independent Bond:</h3>
+                  </div>
+                  <p class="highlight-item-text">
+                    <mark class="marker-highlight marker-yellow">It highlights that even though you aren't related by
+                      blood, your connection and care surpass a biological sibling relationship.</mark>
+                  </p>
+                </div>
+
+                <div class="highlight-item-divider" aria-hidden="true">
+                  <span class="highlight-div-line"></span>
+                  <span class="highlight-div-icon">💓</span>
+                  <span class="highlight-div-line"></span>
+                </div>
+
+                <!-- Highlight Point 2 -->
+                <div class="highlight-item-card">
+                  <div class="highlight-item-badge">
+                    <span class="highlight-icon">😋</span>
+                    <h3 class="highlight-item-title">Shared Laughter & Happiness:</h3>
+                  </div>
+                  <p class="highlight-item-text">
+                    <mark class="marker-highlight marker-pink">It cherishes the fun moments, silly arguments, and the
+                      way you both instantly bring a smile to each other's💓😋😅</mark>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ==================== INTERACTIVE SECRET POCKET ==================== -->
+            <div class="letter-pocket-section">
+              <div class="pocket-header-note">
+                <span class="pocket-icon">💌</span>
+                <span class="pocket-headline">A Secret Message in Your Pocket</span>
+                <span class="pocket-icon">🌸</span>
+              </div>
+              <p class="pocket-sub-note">Tucked close to the heart &bull; tap below to pull out your secret card anytime
+                ✨</p>
+
+              <div class="pocket-widget" id="interactive-pocket">
+                <!-- Pull-out Pocket Card -->
+                <div class="pocket-card" id="pocket-card" aria-hidden="true">
+                  <div class="pocket-card-tab" id="pocket-card-tab" role="button" tabindex="0"
+                    aria-label="Toggle pocket card">
+                    <span class="tab-tag">💌 SECRET POCKET NOTE</span>
+                    <span class="tab-hint" id="tab-hint">Tap to Pull Out Note ✨</span>
+                  </div>
+
+                  <div class="pocket-card-content">
+                    <div class="card-stamp-seal">🌻 💓 🌻</div>
+                    <h4 class="card-internal-heading">Tucked Inside My Heart</h4>
+
+                    <div class="card-note-entry">
+                      <div class="card-note-title-row">
+                        <span class="card-point-icon">♾️</span>
+                        <strong>Unique, Blood-Independent Bond:</strong>
+                      </div>
+                      <p class="card-point-desc">
+                        It highlights that even though you aren't related by blood, your connection and care surpass a
+                        biological sibling relationship.
+                      </p>
+                    </div>
+
+                    <div class="card-note-entry">
+                      <div class="card-note-title-row">
+                        <span class="card-point-icon">😋</span>
+                        <strong>Shared Laughter & Happiness:</strong>
+                      </div>
+                      <p class="card-point-desc">
+                        It cherishes the fun moments, silly arguments, and the way you both instantly bring a smile to
+                        each other's💓😋😅
+                      </p>
+                    </div>
+
+                    <div class="card-signature-note">
+                      <span class="card-sig-line">Always tucked close in my heart,</span>
+                      <span class="card-sig-name">Vedii 🌸</span>
+                    </div>
+
+                    <button type="button" class="btn-tuck-pocket" id="btn-tuck-pocket"
+                      aria-label="Tuck note back into pocket">
+                      <span>📥 Tuck Back Into Pocket</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Pocket Front Pouch -->
+                <div class="pocket-pouch" id="pocket-pouch" role="button" tabindex="0" aria-expanded="false"
+                  aria-controls="pocket-card" aria-label="Secret Pocket: Tap to pull out note">
+                  <div class="pocket-stitch-rim"></div>
+                  <div class="pocket-wax-seal">
+                    <span class="seal-emoji">🌻</span>
+                  </div>
+                  <div class="pocket-label-wrap">
+                    <span class="pocket-label-title">Soul Sister's Pocket 💓</span>
+                    <span class="pocket-label-action" id="pocket-label-action">
+                      <span class="tap-finger">👆</span> Tap to Pull Out Note ✨
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="letter-subheading">
+              Every Conversation with You Makes Me Happy 💌✨
+            </div>
+            <p class="letter-paragraph">
+              Talking to you genuinely makes me happy, even when we talk about totally random things or absolutely
+              nothing at all. Just knowing you are there on the other end brings an instant wave of calm, warmth, and
+              reassurance that brightens up my whole world.
+            </p>
+
+            <div class="letter-subheading">
+              Happiness 🌷💞
+            </div>
+            <p class="letter-paragraph">
+              Your happiness matters to me more than words can say. Above all else, I always want to see you smiling
+              brightly, achieving every single goal you strive for, and receiving all the love and goodness this life
+              has to offer.
+            </p>
+
+            <div class="letter-subheading">
+              Understanding 🫶🏻🥺
+            </div>
+            <p class="letter-paragraph">
+              I want you to know that with me, you can always completely be yourself. You don’t ever have to put on a
+              brave face or pretend to be strong or happy when you are feeling low. Whenever you feel overwhelmed,
+              tired, or need someone to just listen without judgment, I will always be right here for you.
+            </p>
+
+            <div class="letter-subheading">
+              Our Memories and Future ♾️💗
+            </div>
+            <p class="letter-paragraph">
+              Here is to creating countless more beautiful memories together, sharing endless laughter, standing by
+              each other through thick and thin, and keeping our bond stronger with every passing day. It is my
+              sincere wish to always remain a caring, supportive brother figure in your life, and to always honor and
+              appreciate the special connection we share 🤝🏻❤️.
+            </p>
+
+            <div class="letter-subheading">
+              Always Grateful For You 💌🫂
+            </div>
+            <p class="letter-paragraph">
+              As you celebrate your birthday today, I want to end this letter with the deepest gratitude in my heart.
+              Thank you for simply being you. Thank you for lighting up my world with your kindness, your loyalty, and
+              your beautiful soul. You will always be profoundly special to me.
+            </p>
+
+            <p class="letter-paragraph closing-wish">
+              Happy Birthday, My Soul Sister! May your year ahead be as glowing and wonderful as you are 🌻✨💖
+            </p>
+
+          </div>
+
+          <!-- Bottom Signature -->
+          <div class="letter-signature">
+            <span class="sign-text">Forever Your Caring Brother,</span>
+            <span class="sign-name">Vedii 🌸</span>
+            <span class="sign-tag">Always Here For You 🌻</span>
+          </div>
+
+          <!-- Letter Completion Indicator -->
+          <div id="letter-end-marker" class="letter-end-marker">
+            <div class="end-marker-dot"></div>
+            <span>You have completed reading our story 💌</span>
+            <div class="end-marker-dot"></div>
+          </div>
+
+        </article>
+
+        <!-- Reading Completion Banner / Reveal Trigger -->
+        <div id="cake-reveal-prompt" class="cake-reveal-prompt">
+          <div class="prompt-icon">🎂</div>
+          <div class="prompt-text">
+            <h3>A Special Birthday Moment Awaits...</h3>
+            <p>You’ve read through our story. Now it's time for your birthday cake surprise!</p>
+          </div>
+          <button id="btn-unlock-cake" class="btn btn-primary btn-glow">
+            <span>Cut The Birthday Cake 🎂✨</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. BIRTHDAY CAKE SURPRISE SECTION ==================== -->
+    <section id="cake-section" class="cake-section is-hidden" aria-label="Birthday cake surprise interactive section">
+      <div class="cake-container">
+
+        <div class="cake-badge">
+          <span>🎂 Make a Wish!</span>
+        </div>
+
+        <h2 class="cake-title">Blow The Candles & Cut The Cake 🌻</h2>
+        <p class="cake-subtitle">Click the knife or tap the cake to celebrate this magical moment!</p>
+
+        <!-- Interactive CSS Birthday Cake -->
+        <div class="cake-interactive-stage">
+          <div id="birthday-cake" class="birthday-cake" role="button" tabindex="0"
+            aria-label="Interactive birthday cake, tap to blow candles and celebrate">
+
+            <!-- Candles Row -->
+            <div class="candles-row">
+              <div class="candle c1">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle c2">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle c3">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+              <div class="candle c4">
+                <div class="flame"></div>
+                <div class="smoke"></div>
+                <div class="wick"></div>
+              </div>
+            </div>
+
+            <!-- Cake Tiers -->
+            <div class="cake-tier tier-top">
+              <div class="frosting-drops">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="cake-decorations">
+                <span class="mini-sunflower">🌻</span>
+                <span class="mini-strawberry">🍓</span>
+                <span class="mini-sunflower">🌻</span>
+              </div>
+            </div>
+
+            <div class="cake-tier tier-middle">
+              <div class="frosting-layer"></div>
+              <div class="cake-text-icing">Soul Sister 💓</div>
+            </div>
+
+            <div class="cake-tier tier-bottom">
+              <div class="frosting-bottom-swirls"></div>
+            </div>
+
+            <div class="cake-plate"></div>
+          </div>
+        </div>
+
+        <div class="cake-knife-instruction">
+          <button type="button" class="btn-knife-action" id="btn-knife-cut" aria-label="Slice cake with knife">
+            <span class="knife-emoji">🔪</span>
+            <span>Tap Knife to Cut Cake & Make a Wish ✨</span>
+          </button>
+        </div>
+
+        <div class="wish-granted-badge is-hidden" id="wish-granted-badge">
+          <span>✨ Wish Granted! 🎂 &bull; Happy Birthday Soul Sister! 🌸</span>
+        </div>
+
+        <p class="tap-hint" id="cake-tap-hint">✨ Tap the knife or cake to blow the candles & trigger confetti! ✨</p>
+
+        <!-- Revealed Birthday Message Box -->
+        <div id="cake-message-box" class="cake-message-box is-hidden" aria-live="polite">
+          <div class="celebrate-badge">🌻 SPECIAL BLESSING 🌻</div>
+          <h3 class="grand-birthday-wish">Happy Birthday, My Soul Sister! 🌻💗</h3>
+
+          <div class="heartfelt-quote">
+            <p>
+              "A sister does not need to share the same blood to be family. Our bond is forged in trust, shared
+              laughter, unconditional care, and a beautiful soul connection that neither time, distance, nor busy
+              schedules can ever diminish."
+            </p>
+          </div>
+
+          <div class="cake-highlight-summary">
+            <div class="cake-summary-item">
+              <span class="cake-item-icon">♾️</span>
+              <p><strong>Unique, Blood-Independent Bond:</strong> It highlights that even though you aren't related by
+                blood, your connection and care surpass a biological sibling relationship.</p>
+            </div>
+            <div class="cake-summary-item">
+              <span class="cake-item-icon">😋</span>
+              <p><strong>Shared Laughter & Happiness:</strong> It cherishes the fun moments, silly arguments, and the
+                way you both instantly bring a smile to each other's💓😋😅</p>
+            </div>
+          </div>
+
+          <p class="blessing-subtext">
+            May your year ahead be blessed with pure joy, blooming happiness, good health, and dreams fulfilled. Thank
+            you for being such an extraordinary blessing in my life! 🌸✨
+          </p>
+
+          <div class="sister-tags">
+            <span class="tag">#SoulSister 💓</span>
+            <span class="tag">#FamilyByHeart 🌻</span>
+            <span class="tag">#HappyBirthday 🎂</span>
+            <span class="tag">#UnbreakableBond ♾️</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 8. FINAL INSTAGRAM SECTION ==================== -->
+    <footer id="instagram-section" class="instagram-section" aria-label="Instagram profile connection">
+      <div class="insta-container">
+
+        <div class="insta-sunflower-decor" aria-hidden="true">
+          <span>🌻</span>
+          <span>💗</span>
+          <span>🌻</span>
+        </div>
+
+        <p class="insta-heading-text">Follow us on Instagram for more information 🌻</p>
+
+        <a href="https://www.instagram.com/vedaaant__03?dlrf=MXM1eXFydTV0dHI1Yw==" target="_blank"
+          rel="noopener noreferrer" class="btn btn-instagram" id="btn-instagram"
+          aria-label="Follow Vedant on Instagram">
+          <!-- Modern Instagram SVG Icon -->
+          <svg class="insta-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>Follow on Instagram</span>
+        </a>
+
+        <div class="insta-profile-hint">
+          <span>@vedaaant__03</span>
+        </div>
+
+        <p class="copyright-text">Made with endless care and respect for Soul Sister 💓 &bull; 2026</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ==================== PHOTO LIGHTBOX MODAL ==================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Expanded photo preview"
+    hidden>
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button id="lightbox-close-btn" class="lightbox-close" aria-label="Close photo preview">&times;</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged memory photo" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas for Birthday Surprise -->
+  <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
